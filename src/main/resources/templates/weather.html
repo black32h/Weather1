@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Погода в містах України</title>
+</head>
+<body>
+<h1>Погода в містах України</h1>
+
+<form action="http://localhost:8081/weather" method="get">
+    <label for="city">Оберіть місто:</label>
+    <select name="city" id="city">
+        <option value="Київ">Київ</option>
+        <option value="Львів">Львів</option>
+        <option value="Одеса">Одеса</option>
+        <option value="Дніпро">Дніпро</option>
+        <option value="Харків">Харків</option>
+        <option value="Запоріжжя">Запоріжжя</option>
+        <option value="Івано-Франківськ">Івано-Франківськ</option>
+        <option value="Тернопіль">Тернопіль</option>
+        <option value="Чернівці">Чернівці</option>
+        <option value="Вінниця">Вінниця</option>
+        <option value="Черкаси">Черкаси</option>
+        <option value="Полтава">Полтава</option>
+        <option value="Суми">Суми</option>
+        <option value="Рівне">Рівне</option>
+    </select>
+    <button type="submit">Отримати погоду</button>
+</form>
+
+<div th:if="${weather}">
+    <h2>Погода в <span th:text="${city}"></span>:</h2>
+    <p>Температура: <span th:text="${weather.temperature}"></span> °C</p>
+    <p>Опис: <span th:text="${weather.description}"></span></p>
+</div>
+
+<div th:if="${error}">
+    <p th:text="${error}"></p>
+</div>
+</body>
+</html>
